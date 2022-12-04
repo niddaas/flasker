@@ -1,0 +1,44 @@
+<h1>Hello World!</h1>
+
+<p>This is my first webpage!!!</p>
+
+<p>Isn't that cool?</p>
+
+<p>My name is {{ first_name }}</p>
+
+<p>{{ stuff }}</p>
+
+{# | striptags filter keep your html save from hacker that can pass html to takeover your website #}
+{# | in case we have system comment, it is possible to user-hacker to write html code and takeover your website without filter #}
+
+<p>{{ stuff|safe }}</p>				{# | safe do anything ie. for bold #}
+
+{# | striptags filter keep your html save from hacker that can pass html to takeover your website #}
+{# | in case we have system comment, it is possible to user-hacker to write html code and takeover your website without filter #}
+
+<p>{{ stuff|striptags }}</p>		{# | striptags don't do anything ie. not bold #}
+
+<p>{{ stuff2|title }}</p>		{# | title capitalize first character of each words #}
+
+{{ favorite_pizza }}			{# used for variable #}
+
+{# more clean display of dictionary using for loop#}
+<h3>Favorite Pizza:</h3>
+{% for topping in favorite_pizza %}
+	{{ topping }}<br/>			{# <br/> used for line break (enter) #}					
+{% endfor %}
+
+<br/><br/>
+{{ favorite_pizza.3+10 }}		{# math operation only valid for number value of variable #}
+
+<h3>Favorite Pizza2:</h3>
+{% for topping in favorite_pizza %}
+	{% if topping == 41 %}
+		{{ topping + 100 }}<br/>
+	{% else %}
+		{{ topping }}<br/>
+	{% endif %}						
+{% endfor %}
+
+<br/><br/>
+{{ favorite_pizza.0|reverse }}
